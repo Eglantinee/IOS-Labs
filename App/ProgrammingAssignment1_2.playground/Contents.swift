@@ -15,9 +15,19 @@ let studentsStr = "Дмитренко Олександр - ІП-84; Матвій
 var studentsGroups: [String: [String]] = [:]
 
 // Ваш код починається тут
-
-
-
+var allInfo = studentsStr.components(separatedBy: "; ")
+for user in allInfo{
+    let tmp = user.components(separatedBy: "- ")
+    if var arr = studentsGroups[tmp[1]]{
+        arr.append(tmp[0])
+        studentsGroups[tmp[1]] = arr
+    } else {
+        studentsGroups[tmp[1]] = [tmp[0]]
+    }
+}
+for (key, value) in studentsGroups{
+    studentsGroups[key] = value.sorted()
+}
 // Ваш код закінчується тут
 
 print("Завдання 1")
@@ -36,7 +46,8 @@ let points: [Int] = [12, 12, 12, 12, 12, 12, 12, 16]
 //   - значення – масив з оцінками студента (заповніть масив випадковими значеннями, використовуючи функцію `randomValue(maxValue: Int) -> Int`)
 
 func randomValue(maxValue: Int) -> Int {
-    switch(arc4random_uniform(6)) {
+    // switch(arc4random_uniform(6)) {
+    switch(random() % 6) {
     case 1:
         return Int(ceil(Float(maxValue) * 0.7))
     case 2:
@@ -51,7 +62,34 @@ func randomValue(maxValue: Int) -> Int {
 var studentPoints: [String: [String: [Int]]] = [:]
 
 // Ваш код починається тут
-
+//var infoForPoints = studentsStr.components(separatedBy: "; ")
+//for user in infoForPoints{
+    //let tmp = user.components(separatedBy: "- ")
+    //var arrOfPoints: [Int] = []
+    //for i in 1...10{
+        //arrOfPoints.append(randomValue(maxValue: 15))
+    //}
+    //if var arr = studentPoints[tmp[1]]{
+        //arr[tmp[0]] = arrOfPoints
+        //studentPoints[tmp[1]] = arr
+    //} else {
+        //studentPoints[tmp[1]] = [tmp[0]: arrOfPoints]
+    //}
+//}
+func pointsArray() -> [Int] {
+    var arrayPoints: [Int] = []
+    for i in 1...points.count{
+        arrayPoints.append(randomValue(maxValue: points[i-1]))
+    }
+    return arrayPoints
+}
+for (key, value) in studentsGroups{
+    var tmp: [String: [Int]] = [:]
+    for student in value{
+        tmp[student] = pointsArray()
+    }
+    studentPoints[key] = tmp
+}
 
 
 // Ваш код закінчується тут
@@ -70,9 +108,13 @@ print()
 var sumPoints: [String: [String: Int]] = [:]
 
 // Ваш код починається тут
-
-
-
+for (key, value) in studentPoints{
+    var tmp: [String: Int] = [:]
+    for (key2, value2) in value{
+        tmp[key2] = value2.reduce(0, +)
+    }
+    sumPoints[key] = tmp
+}
 // Ваш код закінчується тут
 
 print("Завдання 3")
@@ -87,9 +129,14 @@ print()
 var groupAvg: [String: Float] = [:]
 
 // Ваш код починається тут
-
-
-
+for (key, value) in sumPoints{
+    let numberOfStudents = value.count
+    var total = 0
+    for value2 in value.values {
+        total += value2
+    }
+    groupAvg[key] = Float(total) / Float(numberOfStudents)
+}
 // Ваш код закінчується тут
 
 print("Завдання 4")
@@ -104,9 +151,15 @@ print()
 var passedPerGroup: [String: [String]] = [:]
 
 // Ваш код починається тут
-
-
-
+for (key, value) in sumPoints{
+    var arr: [String] = []
+    for (key2, value2) in value{
+        if value2 >= 73{
+            arr.append(key2)
+        }
+    }
+    passedPerGroup[key] = arr
+}
 // Ваш код закінчується тут
 
 print("Завдання 5")
