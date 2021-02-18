@@ -181,3 +181,100 @@ print(passedPerGroup)
 //
 //Завдання 5
 //["ІВ-72": ["Бортнік Василь", "Киба Олег", "Овчарова Юстіна", "Тимко Андрій"], "ІВ-73": ["Давиденко Костянтин", "Капінус Артем", "Чередніченко Владислав", "Гончар Юрій", "Науменко Павло"], "ІВ-71": ["Музика Олександр", "Трудов Антон", "Гуменюк Олександр", "Феофанов Іван", "Андрющенко Данило", "Корнійчук Ольга"]]
+
+enum Direction {
+    case north
+    case south
+    case east
+    case west
+}
+
+
+class CoordinateIS {
+    var pos : Direction
+    var degree : Int
+    var minute : UInt
+    var second : UInt
+    let direction: [Direction : String] = [.north : "N", .south : "S", .east : "E", .west: "W"]
+
+    init() {
+        degree = 0
+        minute = 0
+        second = 0
+        pos = .north
+    }
+
+    init?(degree: Int, minute: UInt, second: UInt, pos: Direction) {
+        self.degree = degree
+        self.minute = minute
+        self.second = second
+        self.pos = pos
+        if (self.pos == Direction.north) || (self.pos == Direction.south) {
+            if (-180 > self.degree) || (self.degree > 180) {
+                return nil
+            }
+         } else {
+            if (-90 > self.degree) || (self.degree > 90) {
+                return nil
+            }
+        }
+        if self.minute > 59 {
+            return nil
+        }
+        if self.second > 59 {
+            return nil
+        }
+    }
+
+    func repr() {
+        let z = self.direction[self.pos]
+        print("\(self.degree)°\(self.minute)′\(self.second)″ \(z!)")
+    }
+    func decimal() {
+        let z = self.direction[self.pos]
+        let coordinate = NSString(format: "%.6f", Double(self.degree) + Double(self.minute)/60 + Double(self.second)/3600)
+        let replaced = coordinate.replacingOccurrences(of: ".", with: ",")
+        print("\(replaced)° \(z!)")
+    }
+
+    func middleofOne(other: CoordinateIS)-> CoordinateIS? {
+        if self.pos != other.pos {
+            return nil
+        } else {
+            var sec1: Int = 3600 * abs(self.degree) + 60 * Int(self.minute) + Int(self.second)
+            sec1 *= ((self.degree) > 0 ? 1: -1)
+            var sec2: Int = 3600 * abs(other.degree) + 60 * Int(other.minute) + Int(other.second)
+            sec2 *= ((other.degree) > 0 ? 1: -1)
+            let result: Int = Int(sec1 + sec2 )/2
+            var new_degree: Int
+            var new_minute, new_second: UInt
+            new_degree = Int(result / 3600)
+            new_minute = UInt(result % 3600 / 60)
+            new_second = UInt(result % 3600 % 60)
+            return CoordinateIS(degree: new_degree, minute: new_minute, second: new_second, pos: self.pos)
+        }
+    }
+
+    func middleofTwo(cord1: CoordinateIS, cord2: CoordinateIS) -> CoordinateIS? {
+        if cord1.pos != cord2.pos {
+            return nil
+        } else {
+            var sec1: Int = 3600 * abs(cord1.degree) + 60 * Int(cord1.minute) + Int(cord1.second)
+            sec1 *= ((cord1.degree) > 0 ? 1: -1)
+            var sec2: Int = 3600 * abs(cord2.degree) + 60 * Int(cord2.minute) + Int(cord2.second)
+            sec2 *= ((cord2.degree) > 0 ? 1: -1)
+            let result: Int = Int(sec1 + sec2 )/2
+            var new_degree: Int
+            var new_minute, new_second: UInt
+            new_degree = Int(result / 3600)
+            new_minute = UInt(result % 3600 / 60)
+            new_second = UInt(result % 3600 % 60)
+            return CoordinateIS(degree: new_degree, minute: new_minute, second: new_second, pos: self.pos)
+        }
+    }
+}
+
+var a = CoordinateIS(degree: 10, minute: 10, second: 10, pos: Direction.north)!
+print(a.degree)
+a.repr()
+a.decimal()
