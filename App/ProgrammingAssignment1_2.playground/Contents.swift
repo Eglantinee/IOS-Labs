@@ -46,8 +46,8 @@ let points: [Int] = [12, 12, 12, 12, 12, 12, 12, 16]
 //   - значення – масив з оцінками студента (заповніть масив випадковими значеннями, використовуючи функцію `randomValue(maxValue: Int) -> Int`)
 
 func randomValue(maxValue: Int) -> Int {
-    // switch(arc4random_uniform(6)) {
-    switch(random() % 6) {
+    switch(arc4random_uniform(6)) {
+    // switch(random() % 6) {
     case 1:
         return Int(ceil(Float(maxValue) * 0.7))
     case 2:
@@ -154,7 +154,7 @@ var passedPerGroup: [String: [String]] = [:]
 for (key, value) in sumPoints{
     var arr: [String] = []
     for (key2, value2) in value{
-        if value2 >= 73{
+        if value2 >= 60{
             arr.append(key2)
         }
     }
@@ -273,6 +273,8 @@ class CoordinateIS {
         }
     }
 }
+
+print("\nTask 2\n")
 var simpleInit = CoordinateIS()
 var complicatedInit = CoordinateIS(degree: 10, minute: 20, second: 30, pos: Direction.north)!
 complicatedInit.repr()
