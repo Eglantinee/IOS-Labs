@@ -269,12 +269,16 @@ class CoordinateIS {
             new_degree = Int(result / 3600)
             new_minute = UInt(result % 3600 / 60)
             new_second = UInt(result % 3600 % 60)
-            return CoordinateIS(degree: new_degree, minute: new_minute, second: new_second, pos: self.pos)
+            return CoordinateIS(degree: new_degree, minute: new_minute, second: new_second, pos: cord1.pos)
         }
     }
 }
-
-var a = CoordinateIS(degree: 10, minute: 10, second: 10, pos: Direction.north)!
-print(a.degree)
-a.repr()
-a.decimal()
+var simpleInit = CoordinateIS()
+var complicatedInit = CoordinateIS(degree: 10, minute: 20, second: 30, pos: Direction.north)!
+complicatedInit.repr()
+simpleInit.repr()
+complicatedInit.decimal()
+var middle1 = simpleInit.middleofOne(other: complicatedInit)
+middle1?.repr()
+var middle2 = simpleInit.middleofTwo(cord1: simpleInit, cord2: complicatedInit)
+middle2?.repr()
