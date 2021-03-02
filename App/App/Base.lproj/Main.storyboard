@@ -8,21 +8,40 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Draw-->
         <scene sceneID="r7w-RY-B6S">
             <objects>
-                <viewController id="39f-bc-72x" sceneMemberID="viewController">
+                <viewController id="39f-bc-72x" customClass="DrawingViewController" customModule="App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SJz-yE-GN4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Vix-k2-cpF">
+                                <rect key="frame" x="137" y="769" width="141" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Graph"/>
+                                    <segment title="Diagram"/>
+                                </segments>
+                                <connections>
+                                    <action selector="selectedTabs:" destination="7oM-te-xXe" eventType="valueChanged" id="qPu-wp-Oof"/>
+                                </connections>
+                            </segmentedControl>
+                            <view contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3mI-xf-7vK" customClass="Draw" customModule="App" customModuleProvider="target">
+                                <rect key="frame" x="87" y="161" width="240" height="543"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="r76-HB-mzP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="9X1-5l-1P5"/>
+                    <tabBarItem key="tabBarItem" title="Draw" image="pencil" catalog="system" id="9X1-5l-1P5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4a-5G-zo2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="7oM-te-xXe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="673" y="66"/>
+            <point key="canvasLocation" x="671.01449275362324" y="115.84821428571428"/>
         </scene>
         <!--Button1-->
         <scene sceneID="e0k-WQ-rgg">
@@ -72,6 +91,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

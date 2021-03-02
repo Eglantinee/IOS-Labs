@@ -17,3 +17,13 @@ class ViewController: UIViewController {
 
 }
 
+class DrawingViewController: UIViewController {
+    
+    @IBAction func selectedTabs(_ sender: Any) {
+    }
+}
+
+class Draw: UIView {
+    override func draw(_ rect: CGRect) {
+    }
+}
