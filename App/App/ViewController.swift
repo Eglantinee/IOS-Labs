@@ -19,11 +19,22 @@ class ViewController: UIViewController {
 
 class DrawingViewController: UIViewController {
     
-    @IBAction func selectedTabs(_ sender: Any) {
+    @IBOutlet weak var Test: UILabel!
+
+    
+    @IBOutlet weak var choiceSegment: UISegmentedControl!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        Test.text = "new phrase"
     }
 }
 
+
 class Draw: UIView {
     override func draw(_ rect: CGRect) {
+      let path = UIBezierPath(ovalIn: rect)
+      UIColor.green.setFill()
+      path.fill()
     }
 }

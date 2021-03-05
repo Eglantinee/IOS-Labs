@@ -16,30 +16,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Vix-k2-cpF">
-                                <rect key="frame" x="137" y="769" width="141" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8xT-CE-lgF">
+                                <rect key="frame" x="142" y="686" width="131" height="32"/>
                                 <segments>
-                                    <segment title="Graph"/>
-                                    <segment title="Diagram"/>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
                                 </segments>
-                                <connections>
-                                    <action selector="selectedTabs:" destination="7oM-te-xXe" eventType="valueChanged" id="qPu-wp-Oof"/>
-                                </connections>
                             </segmentedControl>
-                            <view contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3mI-xf-7vK" customClass="Draw" customModule="App" customModuleProvider="target">
-                                <rect key="frame" x="87" y="161" width="240" height="543"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zC4-Mx-1GU" customClass="Draw" customModule="App" customModuleProvider="target">
+                                <rect key="frame" x="57" y="112" width="302" height="566"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="r76-HB-mzP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8xT-CE-lgF" firstAttribute="centerY" secondItem="SJz-yE-GN4" secondAttribute="centerY" constant="327.5" id="2mM-k4-rWu"/>
+                            <constraint firstItem="8xT-CE-lgF" firstAttribute="centerY" secondItem="SJz-yE-GN4" secondAttribute="centerY" constant="53.5" id="dVI-2p-uZR"/>
+                            <constraint firstItem="8xT-CE-lgF" firstAttribute="centerX" secondItem="SJz-yE-GN4" secondAttribute="centerX" id="psA-39-p8p"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Draw" image="pencil" catalog="system" id="9X1-5l-1P5"/>
+                    <connections>
+                        <outlet property="choiceSegment" destination="8xT-CE-lgF" id="dPA-g9-HAy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4a-5G-zo2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="7oM-te-xXe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="671.01449275362324" y="115.84821428571428"/>
         </scene>
