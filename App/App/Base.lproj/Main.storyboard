@@ -16,25 +16,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8xT-CE-lgF">
-                                <rect key="frame" x="142" y="686" width="131" height="32"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8xT-CE-lgF">
+                                <rect key="frame" x="137" y="677" width="140" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="uaF-sm-w0K"/>
+                                </constraints>
                                 <segments>
                                     <segment title="First"/>
                                     <segment title="Second"/>
                                 </segments>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zC4-Mx-1GU" customClass="Draw" customModule="App" customModuleProvider="target">
-                                <rect key="frame" x="57" y="112" width="302" height="566"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zC4-Mx-1GU" customClass="Draw" customModule="App" customModuleProvider="target">
+                                <rect key="frame" x="20" y="253" width="374" height="374"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="374" id="lv4-KK-voS"/>
+                                    <constraint firstAttribute="width" constant="374" id="s2L-7a-zrs"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="r76-HB-mzP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8xT-CE-lgF" firstAttribute="centerY" secondItem="SJz-yE-GN4" secondAttribute="centerY" constant="327.5" id="2mM-k4-rWu"/>
-                            <constraint firstItem="8xT-CE-lgF" firstAttribute="centerY" secondItem="SJz-yE-GN4" secondAttribute="centerY" constant="53.5" id="dVI-2p-uZR"/>
-                            <constraint firstItem="8xT-CE-lgF" firstAttribute="centerX" secondItem="SJz-yE-GN4" secondAttribute="centerX" id="psA-39-p8p"/>
+                            <constraint firstItem="8xT-CE-lgF" firstAttribute="top" secondItem="zC4-Mx-1GU" secondAttribute="bottom" constant="50" id="97K-dO-MUi"/>
+                            <constraint firstItem="8xT-CE-lgF" firstAttribute="leading" secondItem="r76-HB-mzP" secondAttribute="leading" constant="137" id="BaE-Lh-AMG"/>
+                            <constraint firstItem="8xT-CE-lgF" firstAttribute="top" secondItem="zC4-Mx-1GU" secondAttribute="bottom" constant="50" id="JVE-hH-rRT"/>
+                            <constraint firstItem="r76-HB-mzP" firstAttribute="bottom" secondItem="8xT-CE-lgF" secondAttribute="bottom" constant="96" id="YJl-zb-7Px"/>
+                            <constraint firstItem="8xT-CE-lgF" firstAttribute="centerX" secondItem="SJz-yE-GN4" secondAttribute="centerX" id="ZJO-x0-TP4"/>
+                            <constraint firstItem="zC4-Mx-1GU" firstAttribute="centerX" secondItem="SJz-yE-GN4" secondAttribute="centerX" id="bmT-vn-eAi"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Draw" image="pencil" catalog="system" id="9X1-5l-1P5"/>
