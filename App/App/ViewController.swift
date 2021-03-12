@@ -84,7 +84,6 @@ class Draw: UIView {
 
 //        hole.addClip()
 
-
         func showDiagram(){
             var parameters = ["60": UIColor.green, "30": UIColor.blue, "10": UIColor.red]
             var currentAngle = 0;
@@ -107,7 +106,6 @@ class Draw: UIView {
 
 
         }
-
 
         let path = UIBezierPath()
         path .move(to: center)
