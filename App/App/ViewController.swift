@@ -85,6 +85,7 @@ class Draw: UIView {
 //        hole.addClip()
         
         
+        
         let path = UIBezierPath()
         path .move(to: center)
         path.addArc(withCenter: center, radius: 70, startAngle: CGFloat(270).toRadians(), endAngle: CGFloat(360).toRadians(), clockwise: true)
