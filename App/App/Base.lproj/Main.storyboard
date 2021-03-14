@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xj5-fT-sw6">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,58 +13,58 @@
             <objects>
                 <viewController id="39f-bc-72x" customClass="DrawingViewController" customModule="App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SJz-yE-GN4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8xT-CE-lgF">
-                                <rect key="frame" x="137" y="677" width="140" height="41"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="uaF-sm-w0K"/>
-                                </constraints>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zC4-Mx-1GU" customClass="Draw" customModule="App" customModuleProvider="target">
+                                <rect key="frame" x="44" y="19" width="808" height="254"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Oka-fn-ZIV">
+                                <rect key="frame" x="44" y="313" width="808" height="32"/>
                                 <segments>
                                     <segment title="First"/>
                                     <segment title="Second"/>
                                 </segments>
+                                <connections>
+                                    <action selector="changePlot:" destination="39f-bc-72x" eventType="valueChanged" id="1Nw-Y9-W4m"/>
+                                </connections>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zC4-Mx-1GU" customClass="Draw" customModule="App" customModuleProvider="target">
-                                <rect key="frame" x="20" y="253" width="374" height="374"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="374" id="lv4-KK-voS"/>
-                                    <constraint firstAttribute="width" constant="374" id="s2L-7a-zrs"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="r76-HB-mzP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8xT-CE-lgF" firstAttribute="top" secondItem="zC4-Mx-1GU" secondAttribute="bottom" constant="50" id="97K-dO-MUi"/>
-                            <constraint firstItem="8xT-CE-lgF" firstAttribute="leading" secondItem="r76-HB-mzP" secondAttribute="leading" constant="137" id="BaE-Lh-AMG"/>
-                            <constraint firstItem="8xT-CE-lgF" firstAttribute="top" secondItem="zC4-Mx-1GU" secondAttribute="bottom" constant="50" id="JVE-hH-rRT"/>
-                            <constraint firstItem="r76-HB-mzP" firstAttribute="bottom" secondItem="8xT-CE-lgF" secondAttribute="bottom" constant="96" id="YJl-zb-7Px"/>
-                            <constraint firstItem="8xT-CE-lgF" firstAttribute="centerX" secondItem="SJz-yE-GN4" secondAttribute="centerX" id="ZJO-x0-TP4"/>
-                            <constraint firstItem="zC4-Mx-1GU" firstAttribute="centerX" secondItem="SJz-yE-GN4" secondAttribute="centerX" id="bmT-vn-eAi"/>
+                            <constraint firstItem="Oka-fn-ZIV" firstAttribute="leading" secondItem="r76-HB-mzP" secondAttribute="leading" id="1x6-FR-daq"/>
+                            <constraint firstItem="zC4-Mx-1GU" firstAttribute="top" relation="greaterThanOrEqual" secondItem="r76-HB-mzP" secondAttribute="top" id="6Cd-Lh-eUg"/>
+                            <constraint firstItem="r76-HB-mzP" firstAttribute="trailing" secondItem="zC4-Mx-1GU" secondAttribute="trailing" id="BPY-Py-gd0"/>
+                            <constraint firstItem="Oka-fn-ZIV" firstAttribute="top" secondItem="zC4-Mx-1GU" secondAttribute="bottom" constant="40" id="JeQ-dJ-fQC"/>
+                            <constraint firstItem="zC4-Mx-1GU" firstAttribute="leading" secondItem="r76-HB-mzP" secondAttribute="leading" id="N2B-b9-vJ5"/>
+                            <constraint firstItem="zC4-Mx-1GU" firstAttribute="top" secondItem="r76-HB-mzP" secondAttribute="top" constant="19" id="eeD-Dq-Jah"/>
+                            <constraint firstItem="zC4-Mx-1GU" firstAttribute="centerX" secondItem="SJz-yE-GN4" secondAttribute="centerX" id="gg9-GJ-5PH"/>
+                            <constraint firstItem="r76-HB-mzP" firstAttribute="bottom" secondItem="Oka-fn-ZIV" secondAttribute="bottom" id="i8g-zh-fjh"/>
+                            <constraint firstItem="r76-HB-mzP" firstAttribute="trailing" secondItem="Oka-fn-ZIV" secondAttribute="trailing" id="tbW-ck-6eT"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Draw" image="pencil" catalog="system" id="9X1-5l-1P5"/>
                     <connections>
-                        <outlet property="choiceSegment" destination="8xT-CE-lgF" id="dPA-g9-HAy"/>
+                        <outlet property="plotView" destination="zC4-Mx-1GU" id="C5o-fJ-SbX"/>
+                        <outlet property="segmentedContorl" destination="Oka-fn-ZIV" id="ad8-ao-OBY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4a-5G-zo2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="671.01449275362324" y="115.84821428571428"/>
+            <point key="canvasLocation" x="666.66666666666674" y="110.49107142857143"/>
         </scene>
         <!--Button1-->
         <scene sceneID="e0k-WQ-rgg">
             <objects>
                 <viewController id="h7U-pT-76l" customClass="ViewController" customModule="App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tjJ-td-zVv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Шкардибарда Іван Група ІВ-82 ЗК ІВ-8229" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4da-rM-T7I">
-                                <rect key="frame" x="133" y="417.5" width="148" height="61"/>
+                                <rect key="frame" x="374" y="176.5" width="148" height="61"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

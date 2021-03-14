@@ -18,109 +18,85 @@ class ViewController: UIViewController {
 }
 
 class DrawingViewController: UIViewController {
-
-
-    @IBOutlet weak var choiceSegment: UISegmentedControl!
-
+    
+    @IBOutlet weak var segmentedContorl: UISegmentedControl!
+    
+    @IBOutlet weak var plotView: Draw!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    @IBAction func changePlot(_ sender: UISegmentedControl) {
+    
+            switch segmentedContorl.selectedSegmentIndex{
+        case 0: plotView.state = 1
+                plotView.setNeedsDisplay()
+        case 1: plotView.state = 2
+            plotView.setNeedsDisplay()
+        default: break;
+        }
     }
 }
 
 extension CGFloat {
     func toRadians() -> CGFloat {
-        return self * CGFloat(M_PI) / 180.0
+        return self * CGFloat(Double.pi) / 180.0
     }
 }
-//@IBDesidddddgnable
+
+
 class Draw: UIView {
+    public var state: Int = 1
     override func draw(_ rect: CGRect) {
-//      let path = UIBezierPath()
-//        path.addArc(withCenter: center, radius: 50, startAngle: CGFloat(0), endAngle: CGFloat(120).toRadians(), clockwise: true)
-//      var fillColor = UIColor.red
-//                fillColor.setFill()
-//                // stroke
-//                path.lineWidth = 1.0
-//                var strokeColor = UIColor.blue
-//                strokeColor.setStroke()
-//                // fill and stroke the path (always do these last)
-//                path.fill()
-//                path.stroke()
-////        let part3 = UIBezierPath()
-////        let part2 = UIBezierPath(arcCenter: CGPoint(x: self.frame.size.width/2, y: self.frame.size.height/2),
-////                                radius: self.frame.size.height/2,
-////                                startAngle: CGFloat(0).toRadians(),
-////                                endAngle: CGFloat(360).toRadians(),
-////                                clockwise: false)
-//        let part3 = UIBezierPath(arcCenter: CGPoint(x: self.frame.size.width/2, y:self.frame.size.height/2) , radius:self.frame.size.height/2, startAngle: CGFloat(270).toRadians(), endAngle: CGFloat(0).toRadians(), clockwise: true)
-//        fillColor = UIColor.green
-//        fillColor.setFill()
-//        strokeColor = UIColor.blue
-//        strokeColor.setStroke()
-////        part2.fill()
-////        part2.stroke()
-//        part3.fill()
-//        part3.stroke()
-//    }
-//    func drawGraph() -> UIBezierPath{
+    func drawGraph(){
+        let axis = UIBezierPath()
+        axis.move(to: CGPoint(x: center.x, y: center.y + 140))
+        axis.addLine(to: CGPoint(x: center.x, y: center.y - 140))
+        axis.addLine(to: CGPoint(x: center.x - 10, y: center.y - 130))
+        axis.move(to: CGPoint(x: center.x, y: center.y - 140))
+        axis.addLine(to: CGPoint(x: center.x + 10, y: center.y - 130))
+        
+        axis.move(to: CGPoint(x: center.x - 140, y: center.y))
+        axis.addLine(to: CGPoint(x: center.x + 140, y: center.y))
+        axis.addLine(to: CGPoint(x: center.x + 130, y: center.y + 10))
+        axis.move(to: CGPoint(x: center.x + 140, y: center.y))
+        axis.addLine(to: CGPoint(x: center.x + 130, y: center.y - 10))
 
-
-
-
-        // this is about drowing plot
-//        let path = UIBezierPath()
-//        path.move(to: center)
-//        for angle in stride(from: 5.0, through: 360.0, by: 0.5){
-//            let x = center.x + CGFloat(angle/360) * 30
-//            let y = center.y - CGFloat(sin(angle/180 * Double.pi)) * 30
-//            path.addLine(to: CGPoint(x:x, y:y))
-//        }
-//        UIColor.black.setStroke()
-//        path.stroke()
-//        return path
-
-
-
-
-//        hole.addClip()
-
-        func showDiagram(){
-            var parameters = ["60": UIColor.green, "30": UIColor.blue, "10": UIColor.red]
-            var currentAngle = 0;
-            let amplifier = 3.6
-            let path = UIBezierPath()
-            let bigRadius = 70
-            let smallRadius = 40
-            for (key, value) in parameters{
-                path.move(to: center)
-                let endAngle = currentAngle + (Int(key) ?? 0) * amplifier
-                path.addArc(withCenter: center, radius: bigRadius, startAngle: CGFloat(currentAngle).toRadians(), endAngle: CGFloat(endAngle).toRadians(), clockwise: true)
-                path.addArc(withCenter: center, radius: smallRadius, startAngle: CGFloat(currentAngle).toRadians(), endAngle: CGFloat(endAngle).toRadians(), clockwise: true)
-                path.move(to: CGPoint(x: center.x + smallRadius * cos(startAngle/ 180 * Double.pi, y: center.y + smallRadius * sin(startAngle/ 180 * Double.pi)))
-                path.move(to: CGPoint(x: center.x + bigRadius * cos(startAngle/ 180 * Double.pi, y: center.y + bigRadius * sin(startAngle/ 180 * Double.pi)))
-                path.move(to: CGPoint(x: center.x + smallRadius * cos(endAngle/ 180 * Double.pi, y: center.y + smallRadius * sin(endAngle / 180 * Double.pi)))
-                path.move(to: CGPoint(x: center.x + bigRadius * cos(endAngle/ 180 * Double.pi, y: center.y + bigRadius * sin(endAngle / 180 * Double.pi)))
-                value.setFill()
-                path.fill()
-
-
-
-        }
+        UIColor.blue.setStroke()
+        axis.stroke()
 
         let path = UIBezierPath()
-        path .move(to: center)
-        path.addArc(withCenter: center, radius: 70, startAngle: CGFloat(270).toRadians(), endAngle: CGFloat(360).toRadians(), clockwise: true)
-        path.addLine(to: CGPoint(x:center.x + 70, y:center.y))
-        path.move(to: center)
-        path.addLine(to: CGPoint(x:center.x, y:center.y + 70))
-        UIColor.red.setFill()
-        path.fill()
+        let x = center.x + CGFloat(-3) * 5
+        let y = center.y - CGFloat(-3 * -3 * -3) * 5
+        path.move(to: CGPoint(x: x, y: y))
+        for angle in stride(from: -3.0, through: 3.0, by: 0.1){
+            let x = center.x + CGFloat(angle) * 5
+            let y = center.y - CGFloat(angle * angle * angle) * 5
+            path.addLine(to: CGPoint(x:x, y:y))
+        }
+        UIColor.black.setStroke()
+        path.stroke()
+        
+    }
 
-        let hole = UIBezierPath()
-        hole.addArc(withCenter: center, radius: 30, startAngle: CGFloat(180).toRadians(), endAngle: CGFloat(360).toRadians(), clockwise: true)
 
-
-        UIColor.white.setFill()
+        func showDiagram(){
+            let parameters = ["15": UIColor.yellow, "25": UIColor.brown, "45": UIColor.gray, "10": UIColor.red, "5": UIColor.purple]
+            var startAngle = CGFloat(0)
+            let amplifier = CGFloat(3.6)
+            let bigRadius = CGFloat(70)
+            for (key, value) in parameters{
+                let path = UIBezierPath()
+                let endAngle = startAngle + CGFloat(Int(key) ?? 0) * amplifier
+                path.addArc(withCenter: center, radius: bigRadius, startAngle: CGFloat(startAngle).toRadians(), endAngle: CGFloat(endAngle).toRadians(), clockwise: true)
+                value.setStroke()
+                path.lineWidth = 30
+                path.stroke()
+                startAngle = endAngle
+                }
+        }
+        if (state == 1){showDiagram()}
+        else {drawGraph()}
 
     }
 }
