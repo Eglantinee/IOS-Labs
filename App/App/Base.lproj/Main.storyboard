@@ -249,7 +249,7 @@
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PictureCollectionViewCell" id="5aR-gB-39f" customClass="PictureCollectionViewCell" customModule="App" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zed-dv-hVf">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -259,10 +259,10 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="g4a-Fe-Dz3" firstAttribute="centerY" secondItem="zed-dv-hVf" secondAttribute="centerY" id="8EE-70-f3A"/>
-                                                <constraint firstItem="g4a-Fe-Dz3" firstAttribute="leading" secondItem="zed-dv-hVf" secondAttribute="leading" id="8YB-VX-S3x"/>
-                                                <constraint firstItem="g4a-Fe-Dz3" firstAttribute="top" secondItem="zed-dv-hVf" secondAttribute="top" id="G1b-Yo-NUb"/>
-                                                <constraint firstItem="g4a-Fe-Dz3" firstAttribute="centerX" secondItem="zed-dv-hVf" secondAttribute="centerX" id="ldH-j5-aD0"/>
+                                                <constraint firstItem="g4a-Fe-Dz3" firstAttribute="centerY" secondItem="zed-dv-hVf" secondAttribute="centerY" id="FdK-7q-ArI"/>
+                                                <constraint firstItem="g4a-Fe-Dz3" firstAttribute="top" secondItem="zed-dv-hVf" secondAttribute="top" id="iHx-ae-2Qn"/>
+                                                <constraint firstItem="g4a-Fe-Dz3" firstAttribute="centerX" secondItem="zed-dv-hVf" secondAttribute="centerX" id="lWP-Ae-2Zm"/>
+                                                <constraint firstItem="g4a-Fe-Dz3" firstAttribute="leading" secondItem="zed-dv-hVf" secondAttribute="leading" id="mAr-7R-bRR"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
@@ -287,13 +287,13 @@
                         <viewLayoutGuide key="safeArea" id="0Yu-BF-758"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="hXE-bf-U0c" firstAttribute="top" secondItem="0Yu-BF-758" secondAttribute="top" id="0JT-Sy-1wd"/>
-                            <constraint firstItem="Xgu-bi-3WC" firstAttribute="top" secondItem="hXE-bf-U0c" secondAttribute="bottom" id="3mP-HH-aBq"/>
-                            <constraint firstItem="Xgu-bi-3WC" firstAttribute="bottom" secondItem="0Yu-BF-758" secondAttribute="bottom" id="3oa-Nk-ku2"/>
-                            <constraint firstItem="hXE-bf-U0c" firstAttribute="leading" secondItem="Xgu-bi-3WC" secondAttribute="leading" id="7V8-8u-BvV"/>
-                            <constraint firstItem="hXE-bf-U0c" firstAttribute="centerX" secondItem="Q8B-Uo-6uB" secondAttribute="centerX" id="RmK-Nw-kOM"/>
-                            <constraint firstItem="hXE-bf-U0c" firstAttribute="leading" secondItem="0Yu-BF-758" secondAttribute="leading" id="S2x-cD-c20"/>
-                            <constraint firstItem="hXE-bf-U0c" firstAttribute="trailing" secondItem="Xgu-bi-3WC" secondAttribute="trailing" id="ukt-gQ-UNp"/>
+                            <constraint firstItem="hXE-bf-U0c" firstAttribute="top" secondItem="0Yu-BF-758" secondAttribute="top" id="1iW-3e-ukw"/>
+                            <constraint firstItem="hXE-bf-U0c" firstAttribute="leading" secondItem="0Yu-BF-758" secondAttribute="leading" id="6zR-PP-j86"/>
+                            <constraint firstItem="hXE-bf-U0c" firstAttribute="centerX" secondItem="Q8B-Uo-6uB" secondAttribute="centerX" id="7dN-uM-8Mk"/>
+                            <constraint firstItem="Xgu-bi-3WC" firstAttribute="bottom" secondItem="0Yu-BF-758" secondAttribute="bottom" id="G1B-cV-TPq"/>
+                            <constraint firstItem="hXE-bf-U0c" firstAttribute="leading" secondItem="Xgu-bi-3WC" secondAttribute="leading" id="RVk-8s-JOp"/>
+                            <constraint firstItem="Xgu-bi-3WC" firstAttribute="top" secondItem="hXE-bf-U0c" secondAttribute="bottom" id="c5P-o6-Yyp"/>
+                            <constraint firstItem="hXE-bf-U0c" firstAttribute="trailing" secondItem="Xgu-bi-3WC" secondAttribute="trailing" id="pyM-Ys-P5n"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="7Ue-zy-A3L"/>

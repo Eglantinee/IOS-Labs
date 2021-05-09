@@ -40,27 +40,26 @@ class PictureViewController: UIViewController{
             
             
             let bigPicture = NSCollectionLayoutItem(
-                layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(2/3),                           heightDimension: .fractionalHeight(2/4)))
+                layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(2/3), heightDimension: .fractionalHeight(1.0)))
             
             
             let littlePicture = NSCollectionLayoutItem(
-                layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3),
-                                                   heightDimension: .fractionalWidth(1/4)))
+                layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .fractionalHeight(1.0)))
             
+            let littlePicture2 = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.5)))
             
             let horizontalGroup = NSCollectionLayoutGroup.horizontal(
-                layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                                   heightDimension: .fractionalWidth(1/4)),
+                layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),                                 heightDimension: .fractionalHeight(1/4)),
                 subitem: littlePicture, count: 3)
             
-            let verticalGroup = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .fractionalHeight(2/4)), subitem: littlePicture, count: 2)
+            let verticalGroup = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .fractionalHeight(1)), subitem: littlePicture2, count: 2)
         
-//            let middleGroup = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(2/4)), subitems: [verticalGroup, bigPicture])
+            let middleGroup = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(2/4)), subitems: [verticalGroup, bigPicture])
             
-            let allGroup = NSCollectionLayoutGroup.horizontal(
+            let allGroup = NSCollectionLayoutGroup.vertical(
                 layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(1)),
                 
-                subitems: [horizontalGroup, verticalGroup, bigPicture, horizontalGroup])
+                subitems: [horizontalGroup, middleGroup, horizontalGroup])
             
             return NSCollectionLayoutSection(group: allGroup)
         }
