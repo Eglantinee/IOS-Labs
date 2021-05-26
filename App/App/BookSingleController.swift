@@ -34,7 +34,7 @@ class BookSingleController: UIViewController {
         guard let book = book else {
             return
         }
-        bookImageView.image = book.bookImage
+        bookImageView.sd_setImage(with: URL(string: book.image), placeholderImage: book.bookImage)
         titleSingle.setup(with: book.title, description: "Title")
         subtitleSingle.setup(with: book.subtitle, description: "Subtitle")
         

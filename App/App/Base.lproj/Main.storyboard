@@ -61,6 +61,9 @@
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="K0m-PK-BcM">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Jre-uA-Zj5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -71,7 +74,9 @@
                             <constraint firstItem="VXF-rg-Evu" firstAttribute="top" secondItem="vkg-Gy-gki" secondAttribute="bottom" id="DM7-rd-ewF"/>
                             <constraint firstItem="vkg-Gy-gki" firstAttribute="leading" secondItem="VXF-rg-Evu" secondAttribute="leading" id="N4a-0L-F1k"/>
                             <constraint firstItem="Qhv-Wf-sRS" firstAttribute="centerX" secondItem="VXF-rg-Evu" secondAttribute="centerX" id="NnP-OZ-3Lu"/>
+                            <constraint firstItem="K0m-PK-BcM" firstAttribute="centerY" secondItem="M3n-W7-sRW" secondAttribute="centerY" id="Rdc-Ex-HYM"/>
                             <constraint firstItem="vkg-Gy-gki" firstAttribute="centerX" secondItem="VXF-rg-Evu" secondAttribute="centerX" id="axb-5D-uA5"/>
+                            <constraint firstItem="K0m-PK-BcM" firstAttribute="centerX" secondItem="M3n-W7-sRW" secondAttribute="centerX" id="bTy-hE-zvU"/>
                             <constraint firstItem="Qhv-Wf-sRS" firstAttribute="trailing" secondItem="VXF-rg-Evu" secondAttribute="trailing" id="cfe-eU-VIi"/>
                             <constraint firstItem="vkg-Gy-gki" firstAttribute="centerX" secondItem="M3n-W7-sRW" secondAttribute="centerX" id="iRE-4B-wID"/>
                             <constraint firstItem="Qhv-Wf-sRS" firstAttribute="top" secondItem="Jre-uA-Zj5" secondAttribute="top" id="seK-ku-aen"/>
@@ -79,6 +84,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Book" image="books.vertical.fill" catalog="system" id="aom-Z3-z7S"/>
                     <connections>
+                        <outlet property="bookActivityIndicator" destination="K0m-PK-BcM" id="992-YA-5kb"/>
                         <outlet property="nbf" destination="G4c-nT-TaE" id="3K0-4d-Xad"/>
                         <outlet property="searchBar" destination="vkg-Gy-gki" id="D2U-rq-kxX"/>
                         <outlet property="tableView" destination="VXF-rg-Evu" id="i83-kv-iZ0"/>
@@ -229,7 +235,7 @@
             </objects>
             <point key="canvasLocation" x="1404.3478260869567" y="765.40178571428567"/>
         </scene>
-        <!--Item-->
+        <!--Image Set-->
         <scene sceneID="T0E-M8-yUD">
             <objects>
                 <viewController id="gaG-1r-MvW" customClass="PictureViewController" customModule="App" customModuleProvider="target" sceneMemberID="viewController">
@@ -237,6 +243,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Kd4-C9-5we">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Xgu-bi-3WC">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -259,10 +268,10 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="g4a-Fe-Dz3" firstAttribute="centerY" secondItem="zed-dv-hVf" secondAttribute="centerY" id="FdK-7q-ArI"/>
-                                                <constraint firstItem="g4a-Fe-Dz3" firstAttribute="top" secondItem="zed-dv-hVf" secondAttribute="top" id="iHx-ae-2Qn"/>
-                                                <constraint firstItem="g4a-Fe-Dz3" firstAttribute="centerX" secondItem="zed-dv-hVf" secondAttribute="centerX" id="lWP-Ae-2Zm"/>
-                                                <constraint firstItem="g4a-Fe-Dz3" firstAttribute="leading" secondItem="zed-dv-hVf" secondAttribute="leading" id="mAr-7R-bRR"/>
+                                                <constraint firstItem="g4a-Fe-Dz3" firstAttribute="centerY" secondItem="zed-dv-hVf" secondAttribute="centerY" id="Wmf-we-DG7"/>
+                                                <constraint firstItem="g4a-Fe-Dz3" firstAttribute="top" secondItem="zed-dv-hVf" secondAttribute="top" id="pCm-MN-5vm"/>
+                                                <constraint firstItem="g4a-Fe-Dz3" firstAttribute="leading" secondItem="zed-dv-hVf" secondAttribute="leading" id="udx-tp-Jwu"/>
+                                                <constraint firstItem="g4a-Fe-Dz3" firstAttribute="centerX" secondItem="zed-dv-hVf" secondAttribute="centerX" id="znN-os-Bcl"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
@@ -274,7 +283,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hXE-bf-U0c">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="aSQ-Wf-yhl">
+                                    <navigationItem title="Photos" id="aSQ-Wf-yhl">
                                         <barButtonItem key="rightBarButtonItem" title="add" image="plus" catalog="system" id="qPw-jB-5ng">
                                             <connections>
                                                 <action selector="showImagePicker:" destination="gaG-1r-MvW" id="PwL-lP-sb5"/>
@@ -287,19 +296,22 @@
                         <viewLayoutGuide key="safeArea" id="0Yu-BF-758"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="hXE-bf-U0c" firstAttribute="top" secondItem="0Yu-BF-758" secondAttribute="top" id="1iW-3e-ukw"/>
-                            <constraint firstItem="hXE-bf-U0c" firstAttribute="leading" secondItem="0Yu-BF-758" secondAttribute="leading" id="6zR-PP-j86"/>
-                            <constraint firstItem="hXE-bf-U0c" firstAttribute="centerX" secondItem="Q8B-Uo-6uB" secondAttribute="centerX" id="7dN-uM-8Mk"/>
-                            <constraint firstItem="Xgu-bi-3WC" firstAttribute="bottom" secondItem="0Yu-BF-758" secondAttribute="bottom" id="G1B-cV-TPq"/>
-                            <constraint firstItem="hXE-bf-U0c" firstAttribute="leading" secondItem="Xgu-bi-3WC" secondAttribute="leading" id="RVk-8s-JOp"/>
-                            <constraint firstItem="Xgu-bi-3WC" firstAttribute="top" secondItem="hXE-bf-U0c" secondAttribute="bottom" id="c5P-o6-Yyp"/>
-                            <constraint firstItem="hXE-bf-U0c" firstAttribute="trailing" secondItem="Xgu-bi-3WC" secondAttribute="trailing" id="pyM-Ys-P5n"/>
+                            <constraint firstItem="Xgu-bi-3WC" firstAttribute="bottom" secondItem="0Yu-BF-758" secondAttribute="bottom" id="8e6-PE-QG9"/>
+                            <constraint firstItem="hXE-bf-U0c" firstAttribute="centerX" secondItem="Kd4-C9-5we" secondAttribute="centerX" id="NIT-Hm-lXA"/>
+                            <constraint firstItem="hXE-bf-U0c" firstAttribute="centerX" secondItem="Q8B-Uo-6uB" secondAttribute="centerX" id="O2t-P3-1KD"/>
+                            <constraint firstItem="Kd4-C9-5we" firstAttribute="centerY" secondItem="Q8B-Uo-6uB" secondAttribute="centerY" id="Vaq-Xj-Shn"/>
+                            <constraint firstItem="Xgu-bi-3WC" firstAttribute="top" secondItem="hXE-bf-U0c" secondAttribute="bottom" id="Xw4-NY-kGj"/>
+                            <constraint firstItem="hXE-bf-U0c" firstAttribute="leading" secondItem="Xgu-bi-3WC" secondAttribute="leading" id="kls-bd-ebJ"/>
+                            <constraint firstItem="hXE-bf-U0c" firstAttribute="trailing" secondItem="Xgu-bi-3WC" secondAttribute="trailing" id="pf7-uY-EiL"/>
+                            <constraint firstItem="hXE-bf-U0c" firstAttribute="leading" secondItem="0Yu-BF-758" secondAttribute="leading" id="pq9-mW-exe"/>
+                            <constraint firstItem="hXE-bf-U0c" firstAttribute="top" secondItem="0Yu-BF-758" secondAttribute="top" id="wEF-RY-fxE"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="7Ue-zy-A3L"/>
+                    <tabBarItem key="tabBarItem" title="Image Set" image="photo" catalog="system" id="7Ue-zy-A3L"/>
                     <connections>
                         <outlet property="collectionView" destination="Xgu-bi-3WC" id="6c4-Ye-Bjc"/>
-                        <outlet property="searchBar" destination="aSQ-Wf-yhl" id="Ta4-7G-2o4"/>
+                        <outlet property="pictureActivityIndicator" destination="Kd4-C9-5we" id="Gdl-at-n2D"/>
+                        <outlet property="searchBar" destination="aSQ-Wf-yhl" id="z57-OY-MAZ"/>
                         <outlet property="view" destination="Xgu-bi-3WC" id="mLw-YY-Ufq"/>
                     </connections>
                 </viewController>
@@ -407,6 +419,7 @@
         <image name="books.vertical.fill" catalog="system" width="128" height="100"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
+        <image name="photo" catalog="system" width="128" height="93"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -5,6 +5,7 @@
 //  Created by Ivan on 24.04.2021.
 //
 import UIKit
+import SDWebImage
 
 class BookTableViewCell: UITableViewCell {
     @IBOutlet weak var bookImage: UIImageView!
@@ -18,9 +19,9 @@ class BookTableViewCell: UITableViewCell {
     }
 
     func setUp(book: BookViewController.Book) {
-        bookImage.image = book.bookImage
         title.text = book.title
         subtitle.text = book.subtitle
         price.text = book.price
+        bookImage.sd_setImage(with: URL(string: book.image), placeholderImage: book.bookImage)
     }
 }

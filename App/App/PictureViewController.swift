@@ -6,20 +6,73 @@
 //
 
 import UIKit
+import Foundation
+import SDWebImage
 
+struct SingleImage: Codable {
+    var id: Int
+    var webformatURL: String
+}
+
+struct Images: Codable {
+    var hits: [SingleImage]
+}
 
 class PictureViewController: UIViewController{
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UINavigationItem!
+    @IBOutlet weak var pictureActivityIndicator: UIActivityIndicatorView!
     
     var imagePicker: ImagePicker!
-    var pictures: [UIImage] = []
+    var pictures: [SingleImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         preparations()
-        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+        pictureActivityIndicator.hidesWhenStopped = true
+        pictureActivityIndicator.layer.cornerRadius = 5
+        getImages()
+    }
+
+    func getImages() {
+
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "pixabay.com"
+        urlComponents.path = "/api"
+
+        urlComponents.queryItems = [URLQueryItem(name: "key", value: "19193969-87191e5db266905fe8936d565"), URLQueryItem(name: "image_type", value: "photo"), URLQueryItem(name: "per_page", value: "27"), URLQueryItem(name: "q", value: "night+city")]
+
+        guard let url = urlComponents.url else {
+            return
+        }
+
+        pictureActivityIndicator.startAnimating()
+
+        URLSession(configuration: .default).dataTask(with: URLRequest(url: url)) { [weak self] data, response, error in
+
+            if let error = error {
+                print(error)
+                return
+            }
+
+            if let data = data {
+                do {
+                    let serverResponse = try JSONDecoder().decode(Images.self, from: data)
+
+                    DispatchQueue.main.async {
+                        self?.pictureActivityIndicator.stopAnimating()
+                        self?.pictures = serverResponse.hits
+                        self?.collectionView.reloadData()
+                    }
+
+                } catch let error {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+        .resume()
     }
     
     func preparations() {
@@ -29,9 +82,9 @@ class PictureViewController: UIViewController{
         collectionView.setCollectionViewLayout(layout, animated: false)
     }
     
-    @IBAction func showImagePicker(_ sender: Any) {
-        self.imagePicker.show()
-    }
+//    @IBAction func showImagePicker(_ sender: Any) {
+//        self.imagePicker.show()
+//    }
     
     func createLayout() -> UICollectionViewLayout {
         
@@ -69,13 +122,6 @@ class PictureViewController: UIViewController{
     
 }
 
-extension PictureViewController: ImagePickerDelegate {
-    func didSelect(image: UIImage?) {
-        pictures.append(image!)
-        collectionView.reloadData()
-    }
-}
-
 
 class PictureCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var pictureImageView: UIImageView!
@@ -89,7 +135,7 @@ extension PictureViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PictureCollectionViewCell", for: indexPath) as! PictureCollectionViewCell
-        cell.pictureImageView.image = pictures[indexPath.row]
+        cell.pictureImageView.sd_setImage(with: URL(string: pictures[indexPath.row].webformatURL), placeholderImage: UIImage(systemName: "photo.fill")?.withTintColor(.lightGray, renderingMode: .alwaysOriginal))
         return cell
     }
 }
